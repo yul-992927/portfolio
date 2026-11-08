@@ -26,6 +26,11 @@
 | 외부 코어 | EIGRP·Redistribution | 이종 라우팅 도메인 연동 |
 | 운영망 | SNMP·로그·설정 백업 | 상태 확인·장애 분석·복구 준비 |
 
+[![본교 OSPF Area 0의 코어 라우터와 ABR 연결 구성](../../assets/main-campus-core-logical.png)](../../assets/main-campus-core-logical.png)
+
+*본교 Area 0의 코어 라우터 간 연결과 각 구역으로 이어지는 ABR 배치.*
+
+[구성도 원본 확대 보기](../../assets/main-campus-core-logical.png)
 OSPF Area 1에는 Stub/no-summary, Area 4에는 NSSA 구성을 반영함. 구역별 경로 학습과 경계 라우터의 연결 구조를 중심으로 정리함.
 
 경로 검증은 이웃 형성, 목적지 경로 학습, 실제 전송과 반환 경로의 순서로 확인하도록 정리함.
