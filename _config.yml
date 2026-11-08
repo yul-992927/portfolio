@@ -1,0 +1,10 @@
+title: 네트워크 설계·구축 포트폴리오
+description: 대학 캠퍼스 네트워크 설계, 이중화 및 패킷 기반 장애 분석
+theme: jekyll-theme-primer
+lang: ko
+plugins:
+  - jekyll-relative-links
+  - jekyll-readme-index
+relative_links:
+  enabled: true
+  collections: false
