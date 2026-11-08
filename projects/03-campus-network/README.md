@@ -59,6 +59,12 @@
 
 VLAN과 Trunk로 논리 구역을 분리하고, HSRP·GLBP는 기본 게이트웨이, PVST는 중복 L2 경로의 루프 방지, ASA는 방화벽 절체를 지원하도록 구성함. 전환 상태와 실제 서비스 응답을 별도로 확인함.
 
+[![전산망 OSPF Area 1의 VLAN과 중복 연결 구성](../../assets/datacenter-area1-logical.png)](../../assets/datacenter-area1-logical.png)
+
+*전산망의 VLAN별 주소 구성, 상위 ABR 연결과 스위치 간 Po1(LACP) 구성.*
+
+[구성도 원본 확대 보기](../../assets/datacenter-area1-logical.png)
+
 [계층별 이중화와 검증 범위](DETAIL.md#계층별-이중화와-검증-범위)
 
 ### DMZ·NAT·ACL·VPN의 통신 경계
