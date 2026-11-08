@@ -71,6 +71,12 @@ VLAN과 Trunk로 논리 구역을 분리하고, HSRP·GLBP는 기본 게이트�
 
 공개 서비스와 내부 자원을 구분하고, 주소 변환과 접근 통제의 역할을 분리함. 연구망 GRE over IPsec 설정에 터널 MTU와 TCP MSS를 반영함. VPN 설정은 ISAKMP 기반이며 암호화 정책과 양방향 전달 경로를 검토함.
 
+[![DMZ의 ASA 이중화와 내부·외부 통신 경계 구성](../../assets/dmz-area4-logical.png)](../../assets/dmz-area4-logical.png)
+
+*Inside·WAN·DMZ 경계와 ASA Active/Standby·Failover 링크, GLBP 및 VLAN 401·402 연결 구조.*
+
+[구성도 원본 확대 보기](../../assets/dmz-area4-logical.png)
+
 [접근 통제와 VPN](DETAIL.md#접근-통제와-vpn)
 
 ### 서버·관제·보안 검증의 연계
