@@ -21,6 +21,10 @@
 - 게이트웨이·L2·방화벽의 이중화 구성과 ASA 역할·IP 인계 확인, 절체 후 통신 실패의 패킷 기반 원인 분석
 - DMZ·NAT/PAT·ACL·VPN을 통한 통신 경계 구성과 서비스·모니터링·로그·설정 백업 경로 연계
 
-[![대학 캠퍼스 네트워크의 구역별 설계 개념도](assets/campus-network-overview.svg)](projects/03-campus-network/README.md)
+<a href="assets/campus-network-topology.png"><img src="assets/campus-network-topology.png" alt="대학 본교·분교의 OSPF 영역, EIGRP 외부 코어, DMZ·관제망 및 연구망 VPN을 연결한 전체 네트워크 구성도" width="520"></a>
+
+*본교·분교의 라우팅 영역과 DMZ, 관제·공격 실습망 및 연구망 VPN 연결 구성.*
+
+[구성도 원본 확대 보기](assets/campus-network-topology.png)
 
 [프로젝트 요약 보기](projects/03-campus-network/README.md)
