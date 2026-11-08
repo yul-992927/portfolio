@@ -112,6 +112,12 @@ SNMP 기반 Cacti/MRTG, rsyslog 중앙 로그, TFTP/Kron 설정 백업과 Ansibl
 
 ### ASA 역할 절체와 데이터 통신의 차이
 
+[![ASA와 DMZ 장비의 인터페이스 및 물리 연결 구성](../../assets/dmz-area4-physical.png)](../../assets/dmz-area4-physical.png)
+
+*ASA 쌍과 내부·외부·DMZ 스위치의 인터페이스 연결 구조. 절체 시험의 연결 환경을 설명하는 구성도.*
+
+[구성도 원본 확대 보기](../../assets/dmz-area4-physical.png)
+
 1. show failover로 Primary/Secondary Pair와 Active/Standby 상태를 확인함.
 2. no failover active로 수동 절체한 뒤 역할·IP 인계를 비교함.
 3. 양 장비의 데이터 인터페이스 감시가 Normal (Waiting)에 머무는 것을 확인함.
