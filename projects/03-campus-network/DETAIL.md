@@ -54,6 +54,12 @@ OSPF Area 1에는 Stub/no-summary, Area 4에는 NSSA 구성을 반영함. 구역
 | 링크 묶음 | EtherChannel | 단일 링크 중단 후 통신 미복구 | 멤버·포트채널·종단 경로 |
 | 방화벽 | ASAv Active/Standby | 수동 역할 전환·IP 인계 | 인터페이스 감시·종단 서비스 연속성 |
 
+[![전산망 라우터·스위치의 포트와 중복 연결 구성](../../assets/datacenter-area1-physical.png)](../../assets/datacenter-area1-physical.png)
+
+*전산망 라우터와 스위치의 인터페이스 연결, 스위치 간 병렬 링크 및 서버 연결 구조.*
+
+[구성도 원본 확대 보기](../../assets/datacenter-area1-physical.png)
+
 중복 장비 배치, 프로토콜 역할 변화, 실제 서비스 응답을 서로 다른 검증 항목으로 구분함.
 
 ## 접근 통제와 VPN
