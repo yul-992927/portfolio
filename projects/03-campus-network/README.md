@@ -48,7 +48,11 @@
 ### OSPF 계층화와 이종 라우팅 연동
 
 본교 백본과 전산·강의·학생·DMZ를 용도별로 구분함. ABR과 Stub/NSSA 구성, 외부 EIGRP 및 연구망 RIPv2와의 재분배를 통해 구간별 경로를 연결함. 설정 여부와 실제 경로 학습·반환 경로 검증을 구분함.
+[![외부 코어 EIGRP AS 100과 본교·분교 및 관제·공격망의 연결](../../assets/eigrp-core-logical.png)](../../assets/eigrp-core-logical.png)
 
+*외부 코어의 EC-R1~R4와 각 라우팅 도메인의 연결 및 재분배 지점.*
+
+[구성도 원본 확대 보기](../../assets/eigrp-core-logical.png)
 [구역과 라우팅 설계](DETAIL.md#구역과-라우팅-설계)
 
 ### VLAN·게이트웨이·방화벽의 계층별 이중화
