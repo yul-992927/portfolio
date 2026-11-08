@@ -124,6 +124,26 @@ SNMP 기반 Cacti/MRTG, rsyslog 중앙 로그, TFTP/Kron 설정 백업과 Ansibl
 4. ASA CLI의 Ping 실패와 같은 시점의 Wireshark Echo Request·Reply를 대조함.
 5. 응답 프레임의 가상 NIC·Virtual MAC 처리 구간을 추가 확인 대상으로 좁힘.
 
+#### 절체 전 상태
+
+![ASA 절체 전 Primary Active와 Secondary Standby Ready](../../assets/asa-failover-before.png)
+
+*Primary Active와 Secondary Standby Ready 상태, 인터페이스의 Normal (Monitored) 표시.*
+
+#### 절체 후 상태
+
+![ASA 절체 후 Primary Standby Ready와 Secondary Active](../../assets/asa-failover-after.png)
+
+*Primary Standby Ready와 Secondary Active로 전환된 상태 및 IP 인계. 인터페이스 감시는 Normal (Waiting)으로 표시됨.*
+
+두 화면은 기록 날짜가 다른 절체 전·후 상태 자료임.
+
+#### ICMP 응답 비교
+
+![ASA Ping 결과와 Wireshark ICMP 요청·응답 캡처](../../assets/asa-icmp-capture.png)
+
+*ASA CLI의 Ping 결과는 ?????로 표시됐으나, Wireshark 캡처 지점에서는 ICMP Echo Request와 Reply가 관찰됨. 가상 NIC·MAC 및 반환 프레임 처리 경로는 추가 확인 대상으로 분류함.*
+
 | 결과 | 판정 |
 | --- | --- |
 | Pair 형성·수동 역할 전환·IP 인계 | 확인 |
