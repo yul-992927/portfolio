@@ -16,9 +16,11 @@
 | 핵심 기술 | OSPF, EIGRP, RIPv2, VLAN, HSRP, GLBP, PVST, NAT/PAT, ACL, GRE/IPsec |
 | 분석·운영 연계 | Wireshark, SNMP, Cacti/MRTG, rsyslog, TFTP/Kron, Ansible |
 
-![캠퍼스 구역과 주요 설계 기술의 개념도](../../assets/campus-network-overview.svg)
+[![대학 캠퍼스 전체 네트워크 구성도](../../assets/campus-network-topology.png)](../../assets/campus-network-topology.png)
 
-*캠퍼스 구역과 주요 기술을 요약한 설계 개념도.*
+*본교·분교의 라우팅 영역, DMZ, 외부 코어와 연구망 VPN 연결 구성.*
+
+[구성도 원본 확대 보기](../../assets/campus-network-topology.png)
 
 ## 설계 목표
 
