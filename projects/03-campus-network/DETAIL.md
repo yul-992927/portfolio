@@ -68,6 +68,11 @@ NAT/PAT는 주소 변환, ACL·방화벽은 통신 허용·거부를 담당함. 
 | 수집·백업 | 수집 방향·리스너·허용 포트 |
 | 캠퍼스 간 연구 통신 | 터널 경로·암호화·반환 경로 |
 
+[![분교 OSPF 영역과 연구망 RIPv2 및 본교 방향 VPN 연결](../../assets/branch-campus-logical.png)](../../assets/branch-campus-logical.png)
+
+*분교 OSPF Area 0·1·2와 연구망 RIPv2의 연결, 본교 강의망으로 이어지는 GRE over IPsec 터널.*
+
+[구성도 원본 확대 보기](../../assets/branch-campus-logical.png)
 GRE over IPsec 설정에 터널 MTU 1400과 TCP MSS 1360을 반영함. 후속 검증은 터널 상태·ESP 패킷·양방향 서비스 응답을 함께 확인하는 방식으로 구성함.
 
 VPN은 ISAKMP 기반으로 구성됐으며, 레거시 암호 설정은 개선 항목으로 정리함. VPN SA·암복호화 카운터와 양방향 서비스 응답을 함께 확보해야 터널 상태와 실제 서비스 연결을 설명할 수 있음.
