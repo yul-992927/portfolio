@@ -173,7 +173,7 @@ SNMP 기반 Cacti/MRTG, rsyslog 중앙 로그, TFTP/Kron 설정 백업과 Ansibl
 1. show failover로 Primary/Secondary Pair와 Active/Standby 상태를 확인함.
 2. no failover active로 수동 절체한 뒤 역할·IP 인계를 비교함.
 3. 양 장비의 데이터 인터페이스 감시가 Normal (Waiting)에 머무는 것을 확인함.
-4. ASA CLI의 Ping 실패와 같은 시점의 Wireshark Echo Request·Reply를 대조함.
+4. ASA CLI의 Ping 결과와 Wireshark에 기록된 Echo Request·Reply를 비교함.
 5. 응답 프레임의 가상 NIC·Virtual MAC 처리 구간을 추가 확인 대상으로 좁힘.
 
 #### 절체 전 상태
@@ -233,7 +233,6 @@ Gi0/1 차단 후 해당 포트는 D로 표시됐으며, Gi0/2는 P, Po10은 SU �
 잔여 링크가 집성에 참여한 상태와 실제 통신 유지 여부가 다를 수 있음을 확인했습니다. 이번 시험에서는 링크 장애 시 통신 유지 목표를 충족하지 못했으며, 정확한 원인은 확정하지 못했습니다.
 
 재시험에서는 양쪽 스위치의 Port-channel 설정, 허용 VLAN과 Trunk 상태, STP 상태, 최소 활성 링크 조건을 점검하고 장애 시점의 로그와 패킷을 함께 확보할 계획입니다. 가상화 환경의 제약 가능성도 원인 후보로 두되, 추가 근거 없이 원인으로 단정하지 않습니다.
-.
 
 ## 결과와 배운 점
 
