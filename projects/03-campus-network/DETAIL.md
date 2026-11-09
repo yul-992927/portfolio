@@ -154,6 +154,14 @@ SNMP 기반 Cacti/MRTG, rsyslog 중앙 로그, TFTP/Kron 설정 백업과 Ansibl
 | 설정 백업 | 전송 결과·생성 파일·복구 시험 |
 | 자동화 | 인벤토리·대상 작업·실행 로그·사후 검증 |
 
+#### Cacti 트래픽 모니터링
+
+SNMP 기반 Cacti 그래프를 통해 DB01의 bond0 인터페이스 송수신 트래픽을 확인함. 수집 기간의 트래픽 변화를 보여주는 운영 자료이며, 이 화면만으로 최대 처리 성능이나 장애 원인을 판단하지 않음.
+
+[![Cacti의 DB01 bond0 인터페이스 트래픽 그래프](../../assets/cacti-traffic-monitoring.png)](../../assets/cacti-traffic-monitoring.png)
+
+*이미지를 클릭하면 원본 크기로 확인할 수 있음.*
+
 ### 모의해킹과 보안 관제
 
 외부 공개 접점 조사, 웹·메일 입력, 내부 접근·권한 경계 시나리오를 네트워크 정책 검증과 연결함. Snort/Suricata·Wazuh·ELK/Splunk는 네트워크·호스트 이벤트의 관측 지점과 로그 전달 흐름을 중심으로 설명함.
