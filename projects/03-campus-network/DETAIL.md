@@ -83,6 +83,29 @@ GRE over IPsec 설정에 터널 MTU 1400과 TCP MSS 1360을 반영함. 후속 �
 
 VPN은 ISAKMP 기반으로 구성됐으며, 레거시 암호 설정은 개선 항목으로 정리함. VPN SA·암복호화 카운터와 양방향 서비스 응답을 함께 확보해야 터널 상태와 실제 서비스 연결을 설명할 수 있음.
 
+### ASA 접근 정책 검사
+
+ASDM Packet Tracer에서 동일한 출발지·목적지에 대해 UDP 53과 ICMP의 정책 처리 결과를 비교함.
+
+| 입력 조건 | 출발지 | 목적지 | 검사 결과 |
+| --- | --- | --- | --- |
+| UDP 목적지 포트 53 | 203.230.40.131 | 203.230.46.136 | 허용 |
+| ICMP Echo Request | 203.230.40.131 | 203.230.46.136 | ACL에 의해 차단 |
+
+#### UDP 53 허용
+
+![ASA Packet Tracer의 UDP 53 허용 결과](../../assets/asa-policy-udp53-allow.png)
+
+*Inside에서 DMZ 방향으로 입력한 UDP 53 패킷의 검사 결과가 The packet is allowed로 표시됨.*
+
+#### ICMP 차단
+
+![ASA Packet Tracer의 ICMP ACL 차단 결과](../../assets/asa-policy-icmp-deny.png)
+
+*ICMP Echo Request의 검사 결과가 The packet is dropped로 표시됐으며, acl-drop 사유를 확인함.*
+
+이 결과는 ASA 내부의 가상 패킷 처리 검사이며, 실제 DNS 응답이나 종단 간 통신 성공을 의미하지 않음.
+
 ## 서비스와 운영보안 연계
 
 ### 서버 서비스
