@@ -62,6 +62,20 @@ OSPF Area 1에는 Stub/no-summary, Area 4에는 NSSA 구성을 반영함. 구역
 
 중복 장비 배치, 프로토콜 역할 변화, 실제 서비스 응답을 서로 다른 검증 항목으로 구분함.
 
+### HSRP 게이트웨이 상태 전환 확인
+
+전산망 라우터 MA1-R1과 MA1-R2의 HSRP 상태를 비교했습니다. 장애 전에는 MA1-R1이 4개 그룹에서 Active였으며, 장애 후에는 MA1-R2가 동일한 가상 IP를 유지하며 Active로 표시되는 것을 확인했습니다.
+
+**장애 전 — MA1-R1**
+
+[![HSRP 장애 전 MA1-R1 상태](../../assets/hsrp-before.png)](../../assets/hsrp-before.png)
+
+**장애 후 — MA1-R2**
+
+[![HSRP 장애 후 MA1-R2 상태](../../assets/hsrp-after.png)](../../assets/hsrp-after.png)
+
+두 화면은 HSRP의 Active 상태 전환을 보여줍니다. 전환 시간과 패킷 손실, 실제 서비스 통신 유지 여부는 이 화면만으로 판단할 수 없으며, 연속 Ping과 서비스 요청을 함께 기록하는 추가 검증이 필요합니다.
+
 ## 접근 통제와 VPN
 
 NAT/PAT는 주소 변환, ACL·방화벽은 통신 허용·거부를 담당함. Outside·Inside·DMZ 경계와 내부 라우팅·서비스 정책을 함께 검토함.
