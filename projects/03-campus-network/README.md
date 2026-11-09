@@ -89,7 +89,7 @@ LB→웹·애플리케이션→DB의 서비스 흐름과 관리·로그·모니�
 
 ### ASA 역할 절체 후 ICMP 응답 미인식
 
-수동 절체와 IP 인계는 성공했지만 인터페이스가 Normal (Waiting)에 머물고 ASA CLI는 Ping 응답을 인식하지 못함. 같은 시점의 Wireshark에서 Echo Request·Reply를 확인해 역할 상태와 데이터 통신을 분리함. 가상 NIC·Virtual MAC·반환 프레임 처리 구간을 원인 후보로 좁혔으며 근본 원인 확정과 종단 서비스 연속성 검증은 미완료임.
+수동 절체와 IP 인계는 성공했지만 인터페이스가 Normal (Waiting)에 머물고 ASA CLI는 Ping 응답을 인식하지 못함. Wireshark 캡처에 기록된 Echo Request·Reply를 확인해 역할 상태와 데이터 통신을 분리함. 가상 NIC·Virtual MAC·반환 프레임 처리 구간을 원인 후보로 좁혔으며 근본 원인 확정과 종단 서비스 연속성 검증은 미완료임.
 
 ### 단일 링크 중단 후 통신 미복구
 
