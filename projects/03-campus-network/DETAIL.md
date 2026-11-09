@@ -114,6 +114,21 @@ LB→웹·애플리케이션→내부 DB의 흐름을 중심으로 구성함. HA
 
 DB 복제와 백업, 백업 파일 생성과 복원 성공, VIP 전환과 서비스 무중단을 각각 구분함.
 
+#### 학생 정보 조회 서비스 흐름
+
+사용자의 DNS 조회부터 HTTPS 접속, 로드밸런서와 웹·애플리케이션 서버를 거쳐 내부 DB를 조회하고 응답하는 과정을 정리했습니다.
+
+<details>
+<summary>서비스 통신 흐름 보기 (GIF)</summary>
+
+<a href="../../assets/student-service-flow.gif">
+  <img src="../../assets/student-service-flow.gif" alt="학생 정보 조회 서비스 흐름" width="100%">
+</a>
+
+이미지를 클릭하면 원본 크기로 볼 수 있습니다.
+
+</details>
+
 ### 모니터링·로그·백업
 
 SNMP 기반 Cacti/MRTG, rsyslog 중앙 로그, TFTP/Kron 설정 백업과 Ansible 관리 경로를 사용자 서비스 통신과 구분함. Ansible은 장비별 설정 표준화와 관리 작업 연계 범위로 정리함.
