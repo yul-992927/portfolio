@@ -208,7 +208,32 @@ SNMP 기반 Cacti/MRTG, rsyslog 중앙 로그, TFTP/Kron 설정 백업과 Ansibl
 
 ### 링크 장애 후 통신 미복구
 
-EtherChannel 단일 링크 shutdown 시험에서는 Ping이 복구되지 않아 링크를 재활성화함. 구성원·논리 인터페이스 상태와 실제 종단 응답을 대조하고 잔여 링크의 전달 경로를 재검증해야 함.
+전산망 스위치 간 LACP EtherChannel에서 일부 물리 링크를 차단한 뒤, 링크 집성 상태와 실제 통신 결과를 비교했습니다.
+
+**1. 장애 전 — 두 링크 집성 참여**
+
+Po10은 SU 상태이며, Gi0/1과 Gi0/2 모두 P 상태로 집성에 참여했습니다.
+
+[![EtherChannel 장애 전 상태](../../assets/etherchannel-before.png)](../../assets/etherchannel-before.png)
+
+**2. 링크 차단 후 — 잔여 링크 유지**
+
+Gi0/1 차단 후 해당 포트는 D로 표시됐으며, Gi0/2는 P, Po10은 SU 상태를 유지했습니다. 이 출력만으로 실제 데이터 통신의 정상 여부를 판단할 수는 없습니다.
+
+[![EtherChannel 링크 차단 후 상태](../../assets/etherchannel-after.png)](../../assets/etherchannel-after.png)
+
+**3. 실제 통신 — Ping 응답 중단**
+
+203.230.45.100 대상 연속 Ping은 응답을 받다가 icmp_seq=13부터 화면에 기록된 마지막 요청까지 timeout이 발생했습니다. 보고서에는 차단한 링크를 복구한 뒤 Ping 응답이 재개됐다고 기록했습니다.
+
+[![연속 Ping 응답 중단](../../assets/etherchannel-ping-loss.png)](../../assets/etherchannel-ping-loss.png)
+
+**분석과 후속 검증**
+
+잔여 링크가 집성에 참여한 상태와 실제 통신 유지 여부가 다를 수 있음을 확인했습니다. 이번 시험에서는 링크 장애 시 통신 유지 목표를 충족하지 못했으며, 정확한 원인은 확정하지 못했습니다.
+
+재시험에서는 양쪽 스위치의 Port-channel 설정, 허용 VLAN과 Trunk 상태, STP 상태, 최소 활성 링크 조건을 점검하고 장애 시점의 로그와 패킷을 함께 확보할 계획입니다. 가상화 환경의 제약 가능성도 원인 후보로 두되, 추가 근거 없이 원인으로 단정하지 않습니다.
+.
 
 ## 결과와 배운 점
 
