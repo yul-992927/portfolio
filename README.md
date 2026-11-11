@@ -20,3 +20,11 @@
 *본교·분교의 라우팅 영역과 DMZ, 관제·공격 실습망 및 연구망 VPN 연결 구성.*
 
 [구성도 원본 확대 보기](assets/campus-network-topology.png)
+
+## [쇼핑몰 서비스망 설계·구축과 접근 제어 검증](projects/02-shopping-network/README.md)
+
+**기간** 2026.08.03 ~ 2026.08.14
+
+네트워크팀 팀장으로 코어망·서비스망의 설계와 구축을 맡고, 라우팅 연동과 장비 관리 접근 정책을 검증함.
+
+[프로젝트 요약](projects/02-shopping-network/README.md) · [검증 및 장애 분석](projects/02-shopping-network/DETAIL.md#장애-분석과-후속-검증)
