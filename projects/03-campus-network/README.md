@@ -38,8 +38,9 @@
 | 항목 | 확인 범위 |
 | --- | --- |
 | 구역·라우팅 구성 | 본교 OSPF 백본·Area와 VLAN 분리, EIGRP·RIPv2 경계 재분배 설정 |
-| 게이트웨이 이중화 | HSRP·GLBP와 PVST 구성, 게이트웨이와 L2 경로의 장애 대응 방식 구분 |
+| 게이트웨이 이중화 | HSRP 4개 그룹의 Active 역할 전환과 가상 IP 유지 확인. 전환 시간·패킷 손실은 미검증 |
 | 캠퍼스 간 연결 | GRE over IPsec과 터널 MTU 1400·TCP MSS 1360 설정 |
+| EtherChannel | 링크 하나를 차단한 뒤 포트채널은 유지됐으나 Ping은 복구되지 않음. 원인은 미확정 |
 | ASA 절체 | 수동 Active/Standby 역할 전환과 IP 인계 확인. 인터페이스 감시·종단 통신 정상화는 미완료 |
 | 운영 경로 | 상태·로그 수집과 장비 설정 백업의 대상·방향을 서비스 통신과 구분 |
 
@@ -48,16 +49,25 @@
 ### OSPF 계층화와 이종 라우팅 연동
 
 본교 백본과 전산·강의·학생·DMZ를 용도별로 구분함. ABR과 Stub/NSSA 구성, 외부 EIGRP 및 연구망 RIPv2와의 재분배를 통해 구간별 경로를 연결함. 설정 여부와 실제 경로 학습·반환 경로 검증을 구분함.
+<details>
+<summary>구성도 보기</summary>
+
 [![외부 코어 EIGRP AS 100과 본교·분교 및 관제·공격망의 연결](../../assets/eigrp-core-logical.png)](../../assets/eigrp-core-logical.png)
 
 *외부 코어의 EC-R1~R4와 각 라우팅 도메인의 연결 및 재분배 지점.*
 
 [구성도 원본 확대 보기](../../assets/eigrp-core-logical.png)
+
+</details>
+
 [구역과 라우팅 설계](DETAIL.md#구역과-라우팅-설계)
 
 ### VLAN·게이트웨이·방화벽의 계층별 이중화
 
 VLAN과 Trunk로 논리 구역을 분리하고, HSRP·GLBP는 기본 게이트웨이, PVST는 중복 L2 경로의 루프 방지, ASA는 방화벽 절체를 지원하도록 구성함. 전환 상태와 실제 서비스 응답을 별도로 확인함.
+
+<details>
+<summary>구성도 보기</summary>
 
 [![전산망 OSPF Area 1의 VLAN과 중복 연결 구성](../../assets/datacenter-area1-logical.png)](../../assets/datacenter-area1-logical.png)
 
@@ -65,17 +75,26 @@ VLAN과 Trunk로 논리 구역을 분리하고, HSRP·GLBP는 기본 게이트�
 
 [구성도 원본 확대 보기](../../assets/datacenter-area1-logical.png)
 
+</details>
+
+
 [계층별 이중화와 검증 범위](DETAIL.md#계층별-이중화와-검증-범위)
 
 ### DMZ·NAT·ACL·VPN의 통신 경계
 
 공개 서비스와 내부 자원을 구분하고, 주소 변환과 접근 통제의 역할을 분리함. 연구망 GRE over IPsec 설정에 터널 MTU와 TCP MSS를 반영함. VPN 설정은 ISAKMP 기반이며 암호화 정책과 양방향 전달 경로를 검토함.
 
+<details>
+<summary>구성도 보기</summary>
+
 [![DMZ의 ASA 이중화와 내부·외부 통신 경계 구성](../../assets/dmz-area4-logical.png)](../../assets/dmz-area4-logical.png)
 
 *Inside·WAN·DMZ 경계와 ASA Active/Standby·Failover 링크, GLBP 및 VLAN 401·402 연결 구조.*
 
 [구성도 원본 확대 보기](../../assets/dmz-area4-logical.png)
+
+</details>
+
 
 [접근 통제와 VPN](DETAIL.md#접근-통제와-vpn)
 
