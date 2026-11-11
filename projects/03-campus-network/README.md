@@ -50,13 +50,11 @@
 
 본교 백본과 전산·강의·학생·DMZ를 용도별로 구분함. ABR과 Stub/NSSA 구성, 외부 EIGRP 및 연구망 RIPv2와의 재분배를 통해 구간별 경로를 연결함. 설정 여부와 실제 경로 학습·반환 경로 검증을 구분함.
 <details>
-<summary>구성도 보기</summary>
+<summary>외부 코어 구성도 보기</summary>
 
-[![외부 코어 EIGRP AS 100과 본교·분교 및 관제·공격망의 연결](../../assets/eigrp-core-logical.png)](../../assets/eigrp-core-logical.png)
-
-*외부 코어의 EC-R1~R4와 각 라우팅 도메인의 연결 및 재분배 지점.*
-
-[구성도 원본 확대 보기](../../assets/eigrp-core-logical.png)
+<p><a href="../../assets/eigrp-core-logical.png"><img src="../../assets/eigrp-core-logical.png" alt="외부 코어 EIGRP AS 100과 본교·분교 및 관제·공격망의 연결"></a></p>
+<p><em>외부 코어의 EC-R1~R4와 각 라우팅 도메인의 연결 및 재분배 지점.</em></p>
+<p><a href="../../assets/eigrp-core-logical.png">구성도 원본 확대 보기</a></p>
 
 </details>
 
@@ -67,13 +65,11 @@
 VLAN과 Trunk로 논리 구역을 분리하고, HSRP·GLBP는 기본 게이트웨이, PVST는 중복 L2 경로의 루프 방지, ASA는 방화벽 절체를 지원하도록 구성함. 전환 상태와 실제 서비스 응답을 별도로 확인함.
 
 <details>
-<summary>구성도 보기</summary>
+<summary>전산망 구성도 보기</summary>
 
-[![전산망 OSPF Area 1의 VLAN과 중복 연결 구성](../../assets/datacenter-area1-logical.png)](../../assets/datacenter-area1-logical.png)
-
-*전산망의 VLAN별 주소 구성, 상위 ABR 연결과 스위치 간 Po1(LACP) 구성.*
-
-[구성도 원본 확대 보기](../../assets/datacenter-area1-logical.png)
+<p><a href="../../assets/datacenter-area1-logical.png"><img src="../../assets/datacenter-area1-logical.png" alt="전산망 OSPF Area 1의 VLAN과 중복 연결 구성"></a></p>
+<p><em>전산망의 VLAN별 주소 구성, 상위 ABR 연결과 스위치 간 Po1(LACP) 구성.</em></p>
+<p><a href="../../assets/datacenter-area1-logical.png">구성도 원본 확대 보기</a></p>
 
 </details>
 
@@ -85,13 +81,11 @@ VLAN과 Trunk로 논리 구역을 분리하고, HSRP·GLBP는 기본 게이트�
 공개 서비스와 내부 자원을 구분하고, 주소 변환과 접근 통제의 역할을 분리함. 연구망 GRE over IPsec 설정에 터널 MTU와 TCP MSS를 반영함. VPN 설정은 ISAKMP 기반이며 암호화 정책과 양방향 전달 경로를 검토함.
 
 <details>
-<summary>구성도 보기</summary>
+<summary>DMZ 구성도 보기</summary>
 
-[![DMZ의 ASA 이중화와 내부·외부 통신 경계 구성](../../assets/dmz-area4-logical.png)](../../assets/dmz-area4-logical.png)
-
-*Inside·WAN·DMZ 경계와 ASA Active/Standby·Failover 링크, GLBP 및 VLAN 401·402 연결 구조.*
-
-[구성도 원본 확대 보기](../../assets/dmz-area4-logical.png)
+<p><a href="../../assets/dmz-area4-logical.png"><img src="../../assets/dmz-area4-logical.png" alt="DMZ의 ASA 이중화와 내부·외부 통신 경계 구성"></a></p>
+<p><em>Inside·WAN·DMZ 경계와 ASA Active/Standby·Failover 링크, GLBP 및 VLAN 401·402 연결 구조.</em></p>
+<p><a href="../../assets/dmz-area4-logical.png">구성도 원본 확대 보기</a></p>
 
 </details>
 
