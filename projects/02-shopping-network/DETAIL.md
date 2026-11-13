@@ -51,6 +51,10 @@
 
 별도 관제망에서 SNMP 기반 장비 상태와 트래픽 수집을 확인함. 전체 네트워크 랩과 MRTG 서버의 최종 연동은 후속 과제로 남김.
 
+[![웹하드·DB·모니터링·백업 서버 운영 구성도](../../assets/shopping-service-operation-flow.png)](../../assets/shopping-service-operation-flow.png)
+
+*웹하드, DB·스토리지, 모니터링, 백업 서버 간 연계 구성.*
+
 ### 네트워크 구현도 평가
 
 [![네트워크 구현 항목, 검증 방법, 결과를 정리한 평가표](../../assets/shopping-network-validation-summary.png)](../../assets/shopping-network-validation-summary.png)
