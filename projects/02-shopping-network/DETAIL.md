@@ -16,6 +16,10 @@
 | 모의 보안 점검 | 격리된 환경에서 쇼핑몰 웹 애플리케이션의 인증·세션 처리와 입력값 검증을 점검하고, 발견 사항을 탐지 결과와 비교함. |
 | 보안 관제 | Snort 3 IDS 경보, 패킷 캡처, 웹 접근 로그를 대조해 주요 시나리오의 탐지를 확인함. 적용된 일부 IPS 정책에서 차단이 관찰됐으며, 장비 전반에 대한 정책 배포와 검증은 후속 과제로 남김. |
 
+[![쇼핑몰 웹 서버 WS02와 DB06 및 IDS·IPS 구성](../../assets/shopping-dmz-web-db.png)](../../assets/shopping-dmz-web-db.png)
+
+*격리 실습망의 쇼핑몰 웹·DB 및 IDS·IPS 구성.*
+
 [![ALPACA NSM 관제 흐름도](../../assets/shopping-security-monitoring-flow.jpg)](../../assets/shopping-security-monitoring-flow.jpg)
 
 *IDS 패킷·경보와 서버 로그를 수집해 중앙에서 분석하는 관제 흐름.*
