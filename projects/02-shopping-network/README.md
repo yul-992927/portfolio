@@ -18,6 +18,12 @@
 | 접근 제어 | NAT/PAT, ACL, SSH |
 | 검증·운영 | EIGRP Key-chain, 라우팅 테이블·NAT 변환 확인, SNMP·MRTG |
 
+[![쇼핑몰 코어망과 서비스망, DMZ 및 관리·관제망의 논리 구성도](../../assets/shopping-network-topology.png)](../../assets/shopping-network-topology.png)
+
+*코어망 EIGRP AS 100, 서비스망 AS 200, 하위 RIP 구역과 DMZ·관리망의 연결 구성.*
+
+[구성도 원본 확대 보기](../../assets/shopping-network-topology.png)
+
 [구역별 네트워크 구성 보기](DETAIL.md#구역과-라우팅-설계)
 
 ## 설계 목표
