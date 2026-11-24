@@ -9,11 +9,11 @@
 - **접근 통제·VPN** — DMZ와 내부망의 통신 경계 정의, NAT/PAT·ACL·방화벽 정책 구성, GRE over IPsec과 터널 MTU·TCP MSS 설정
 - **장애 분석·운영 연계** — 장비 상태·라우팅 정보·Wireshark 캡처 대조, SNMP 모니터링·중앙 로그·장비 설정 백업의 관리 경로 구성
 
-## [가용성과 접근 통제를 고려한 대학 캠퍼스 네트워크 설계·구축](projects/03-campus-network/README.md)
+## [가용성과 접근 통제를 고려한 대학 캠퍼스 네트워크 설계·구축](projects/03-campus-network/DETAIL.md)
 
 **기간** 2026.09 – 2026.10
 
-[프로젝트 요약](projects/03-campus-network/README.md) · [검증 및 장애 분석](projects/03-campus-network/DETAIL.md#장애-분석과-후속-검증)
+[검증 및 장애 분석](projects/03-campus-network/DETAIL.md#장애-분석과-후속-검증)
 
 <a href="assets/campus-network-topology.png"><img src="assets/campus-network-topology.png" alt="대학 본교·분교의 OSPF 영역, EIGRP 외부 코어, DMZ·관제망 및 연구망 VPN을 연결한 전체 네트워크 구성도" width="520"></a>
 
@@ -21,13 +21,13 @@
 
 [구성도 원본 확대 보기](assets/campus-network-topology.png)
 
-## [쇼핑몰 서비스망 설계·구축과 접근 제어 검증](projects/02-shopping-network/README.md)
+## [쇼핑몰 서비스망 설계·구축과 접근 제어 검증](projects/02-shopping-network/DETAIL.md)
 
 **기간** 2026.08.03 ~ 2026.08.14
 
 네트워크팀 팀장으로 코어망·서비스망의 설계와 구축을 맡고, 라우팅 연동과 장비 관리 접근 정책을 검증함.
 
-[프로젝트 요약](projects/02-shopping-network/README.md) · [검증 및 장애 분석](projects/02-shopping-network/DETAIL.md#장애-분석과-후속-검증)
+[검증 및 장애 분석](projects/02-shopping-network/DETAIL.md#장애-분석과-후속-검증)
 
 <a href="assets/shopping-network-topology.png"><img src="assets/shopping-network-topology.png" alt="쇼핑몰 코어망과 서비스망, DMZ 및 관리·관제망의 논리 구성도" width="520"></a>
 
