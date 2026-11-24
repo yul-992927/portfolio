@@ -1,8 +1,8 @@
-# 대학 캠퍼스 네트워크 설계·구축 상세 기록
+# 가용성과 접근 통제를 고려한 대학 캠퍼스 네트워크 설계·구축
 
-[프로젝트 요약](README.md) · [포트폴리오 메인](../../README.md)
+[포트폴리오 메인](../../README.md)
 
-[소개와 범위](#소개와-범위) · [라우팅](#구역과-라우팅-설계) · [이중화](#계층별-이중화와-검증-범위) · [VPN·통제](#접근-통제와-vpn) · [장애 분석](#장애-분석과-후속-검증)
+[개요](#소개와-범위) · [담당 역할](#담당-역할) · [주요 결과](#주요-결과) · [라우팅](#구역과-라우팅-설계) · [이중화](#계층별-이중화와-검증-범위) · [VPN·통제](#접근-통제와-vpn) · [장애 분석](#장애-분석과-후속-검증)
 
 ## 소개와 범위
 
@@ -13,6 +13,37 @@
 ![캠퍼스 네트워크 구역별 설계 개념도](../../assets/campus-network-overview.svg)
 
 *캠퍼스 구역과 주요 기술을 요약한 설계 개념도.*
+
+| 항목 | 내용 |
+| --- | --- |
+| 수행 시기 | 2026년 9월 – 10월 |
+| 프로젝트 배경 | 대학 IT 인프라 구축 및 모의해킹 기반 통합 보안관제 체계 구현 |
+| 환경 | GNS3, VMware Workstation, Cisco IOS·ASAv |
+| 핵심 기술 | OSPF, EIGRP, RIPv2, VLAN, HSRP, GLBP, PVST, NAT/PAT, ACL, GRE/IPsec |
+| 분석·운영 연계 | Wireshark, SNMP, Cacti/MRTG, rsyslog, TFTP/Kron, Ansible |
+
+[![대학 캠퍼스 전체 네트워크 구성도](../../assets/campus-network-topology.png)](../../assets/campus-network-topology.png)
+
+*본교·분교의 라우팅 영역, DMZ, 외부 코어와 연구망 VPN 연결 구성.*
+
+[구성도 원본 확대 보기](../../assets/campus-network-topology.png)
+
+## 담당 역할
+
+- **기획·연동 조율** — 본교·분교와 주요 서비스의 통신 요구사항, 구축 순서, 검증 기준을 정리하고 네트워크·서버·보안관제 작업의 연동을 조율함.
+- **네트워크 정책 검증** — 패킷 관측 지점과 로그 수집 범위를 정하고, 패킷·로그를 대조해 ACL·방화벽 정책의 보완 근거를 정리함.
+- **점검 자동화·문서화** — Python 기반 점검 로직과 결과 형식을 표준화하고, 설정 변경 후 재점검 항목을 문서화함.
+
+## 주요 결과
+
+| 항목 | 확인 범위 |
+| --- | --- |
+| 구역·라우팅 구성 | 본교 OSPF 백본·Area와 VLAN 분리, EIGRP·RIPv2 경계 재분배 설정 |
+| 게이트웨이 이중화 | HSRP 4개 그룹의 Active 역할 전환과 가상 IP 유지 확인. 전환 시간·패킷 손실은 미검증 |
+| 캠퍼스 간 연결 | GRE over IPsec과 터널 MTU 1400·TCP MSS 1360 설정 |
+| EtherChannel | 링크 하나를 차단한 뒤 포트채널은 유지됐으나 Ping은 복구되지 않음. 원인은 미확정 |
+| ASA 절체 | 수동 Active/Standby 역할 전환과 IP 인계 확인. 인터페이스 감시·종단 통신 정상화는 미완료 |
+| 운영 경로 | 상태·로그 수집과 장비 설정 백업의 대상·방향을 서비스 통신과 구분 |
 
 ## 구역과 라우팅 설계
 
@@ -43,6 +74,15 @@ OSPF Area 1에는 Stub/no-summary, Area 4에는 NSSA 구성을 반영함. 구역
 | 양방향 통신 | 송수신 결과 대조 | 요청뿐 아니라 응답 반환 확인 |
 
 재분배 정책의 추가 검증 항목은 경로 필터·메트릭·태그와 장애 시 수렴 시간임.
+
+<details>
+<summary>외부 코어 구성도 보기</summary>
+
+<p><a href="../../assets/eigrp-core-logical.png"><img src="../../assets/eigrp-core-logical.png" alt="외부 코어 EIGRP AS 100과 본교·분교 및 관제·공격망의 연결"></a></p>
+<p><em>외부 코어의 EC-R1~R4와 각 라우팅 도메인의 연결 및 재분배 지점.</em></p>
+<p><a href="../../assets/eigrp-core-logical.png">구성도 원본 확대 보기</a></p>
+
+</details>
 
 ## 계층별 이중화와 검증 범위
 
@@ -75,6 +115,15 @@ OSPF Area 1에는 Stub/no-summary, Area 4에는 NSSA 구성을 반영함. 구역
 [![HSRP 장애 후 MA1-R2 상태](../../assets/hsrp-after.png)](../../assets/hsrp-after.png)
 
 두 화면은 HSRP의 Active 상태 전환을 보여줌. 전환 시간과 패킷 손실, 실제 서비스 통신 유지 여부는 이 화면만으로 판단할 수 없으며, 연속 Ping과 서비스 요청을 함께 기록하는 추가 검증이 필요함.
+
+<details>
+<summary>전산망 구성도 보기</summary>
+
+<p><a href="../../assets/datacenter-area1-logical.png"><img src="../../assets/datacenter-area1-logical.png" alt="전산망 OSPF Area 1의 VLAN과 중복 연결 구성"></a></p>
+<p><em>전산망의 VLAN별 주소 구성, 상위 ABR 연결과 스위치 간 Po1(LACP) 구성.</em></p>
+<p><a href="../../assets/datacenter-area1-logical.png">구성도 원본 확대 보기</a></p>
+
+</details>
 
 ## 접근 통제와 VPN
 
@@ -119,6 +168,15 @@ ASDM Packet Tracer에서 동일한 출발지·목적지에 대해 UDP 53과 ICMP
 *ICMP Echo Request의 검사 결과가 The packet is dropped로 표시됐으며, acl-drop 사유를 확인함.*
 
 이 결과는 ASA 내부의 가상 패킷 처리 검사이며, 실제 DNS 응답이나 종단 간 통신 성공을 의미하지 않음.
+
+<details>
+<summary>DMZ 구성도 보기</summary>
+
+<p><a href="../../assets/dmz-area4-logical.png"><img src="../../assets/dmz-area4-logical.png" alt="DMZ의 ASA 이중화와 내부·외부 통신 경계 구성"></a></p>
+<p><em>Inside·WAN·DMZ 경계와 ASA Active/Standby·Failover 링크, GLBP 및 VLAN 401·402 연결 구조.</em></p>
+<p><a href="../../assets/dmz-area4-logical.png">구성도 원본 확대 보기</a></p>
+
+</details>
 
 ## 서비스와 운영보안 연계
 
@@ -248,4 +306,4 @@ Gi0/1 차단 후 해당 포트는 D로 표시됐으며, Gi0/2는 P, Po10은 SU �
 
 추가 검증 항목은 게이트웨이 절체 시 패킷 손실·복구 시간, VPN 암복호화 카운터·서비스 응답, 링크 장애 시 잔여 경로임. ASA 인터페이스 감시와 종단 통신 정상화는 미완료 상태로 남김.
 
-[프로젝트 요약](README.md) · [포트폴리오 메인](../../README.md)
+[포트폴리오 메인](../../README.md)
