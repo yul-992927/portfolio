@@ -190,16 +190,9 @@ DB 복제와 백업, 백업 파일 생성과 복원 성공, VIP 전환과 서비
 
 사용자의 DNS 조회부터 HTTPS 접속, 로드밸런서와 웹·애플리케이션 서버를 거쳐 내부 DB를 조회하고 응답하는 과정을 정리함.
 
-<details>
-<summary>서비스 통신 흐름 보기 (GIF)</summary>
+[![학생 정보 조회 서비스 흐름](../../assets/student-service-flow.gif)](../../assets/student-service-flow.gif)
 
-<a href="../../assets/student-service-flow.gif">
-  <img src="../../assets/student-service-flow.gif" alt="학생 정보 조회 서비스 흐름" width="100%">
-</a>
-
-이미지를 클릭하면 원본 크기로 볼 수 있음.
-
-</details>
+[GIF 원본 열기](../../assets/student-service-flow.gif)
 
 ### 모니터링·로그·백업
 
